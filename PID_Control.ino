@@ -12,7 +12,7 @@ double P                      = 0.02;
 double I                      = 0;
 double D                      = 0;
 double PWM_MAX                = 255;
-double PWM_MIN                = 50;
+double PWM_MIN                = 110;
 int PID_On                    = 0;
 int Running_Status;
 
@@ -162,7 +162,7 @@ void Okuri_Start1(){
     Serial.println("Okuri_Start1_On");
     digitalWrite(T_OkuriMotor, HIGH);
     digitalWrite(T_OkuriMotor_Middle, HIGH);
-    delay(2000);
+    delay(1000);
     digitalWrite(T_OkuriMotor, LOW);
     digitalWrite(T_OkuriMotor_Middle, LOW);
     Serial.println("Okuri_Start1_Off");
@@ -174,7 +174,7 @@ void Okuri_Start2(){
     Serial.println("Okuri_Start2_On");
     digitalWrite(T_OkuriMotor, HIGH);
     digitalWrite(T_OkuriMotor_Middle, HIGH);
-    delay(3000);
+    delay(1000);
     digitalWrite(T_OkuriMotor, LOW);
     digitalWrite(T_OkuriMotor_Middle, LOW);
     Serial.println("Okuri_Start2_Off");
@@ -324,11 +324,17 @@ void Serial_Check(){
                 PID_On = 0;
                 break;
 
+              case 'f':   //PID_Break
+                Okuri_Start1();
+                break;
+
               default:    //Default Mode
                 break;
           }
    }
 }
+
+
 
 
 
